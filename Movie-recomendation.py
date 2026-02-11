@@ -119,13 +119,24 @@ def main():
     print(Fore.BLUE + "🎬 Welcome to your Personal Movie Recommendation Assistant! 🎥\n")
     name = input(Fore.YELLOW + "What's your name? ").strip()
     print(f"\n{Fore.GREEN}Great to meet you, {name}!\n")
-    age = int(input(Fore.YELLOW + "What is your age?"))
-    if age  >=6:
-        print(f"\n{Fore.GREEN}You can watch movies {name}!\n")
+
+    try:
+        age = int(input(Fore.YELLOW + "What is your age? "))
+    except ValueError:
+        print(Fore.RED + "Invalid age. Please restart the program.")
+        sys.exit()
+
+    # AGE CHECK LOGIC
+    if age < 6:
+        print(f"\n{Fore.RED}Sorry {name}, you cannot continue without your parent's permission.\n")
+        sys.exit()   # 🔴 This BREAKS the program
     else:
-        print(f"\n{Fore.GREEN}I an so sorry but you cannot watch any movies, {name}!\n")
-        
+        print(f"\n{Fore.GREEN}You can watch movies, {name}! Let's continue 🎉\n")
+
+    # Only runs if age >= 6
     handle_ai(name)
+
+    
 
 if __name__ == "__main__":
     main()
