@@ -15,6 +15,12 @@ jokes = [
     "Why do travelers always feel warm? Because of all their hot spots!"
 ]
 
+flights = [
+    "Emerats is a good airline, specially for long trips",
+    "Indigo is the best airline, specially for 3-4 hrs trip",
+    "Qutar airlines is good, specially for the proper timing of takeoff and landing"
+]
+
 def normalize_input(text):
     return re.sub(r"\s+", " ", text.strip().lower())
 
@@ -57,11 +63,15 @@ def packing_tips():
 def tell_joke():
     print(Fore.YELLOW + f"TravelBot: {random.choice(jokes)}")
 
+def choose_fights():
+    print(Fore.YELLOW + f"TravelBot: {random.choice(flights)}")
+
 def show_help():
     print(Fore.MAGENTA + "\nI can:")
     print(Fore.GREEN + "- Suggest travel spots (say 'recommend')")
     print(Fore.GREEN + "- Offer packing tips (say 'packing')")
     print(Fore.GREEN + "- Tell a joke (say 'joke')")
+    print(Fore.GREEN + "- Tell a airline for your trip (say 'flights')")
     print(Fore.GREEN + "- Type 'exit' or 'bye' to end.\n")
 
 def chat():
@@ -81,6 +91,8 @@ def chat():
             packing_tips()
         elif "joke" in user_input or "funny" in user_input:
             tell_joke()
+        elif "flights" in user_input or "airlines" in user_input:
+            choose_fights()
         elif "help" in user_input:
             show_help()
         elif "exit" in user_input or "bye" in user_input:
