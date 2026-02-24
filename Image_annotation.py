@@ -1,9 +1,8 @@
 import cv2
 import matplotlib.pyplot as plt
 
-# Step 1: Load the Image
-image_path = 'exa.jpg'  # User-provided image path
-image = cv2.imread(image_path)
+# Step 1: Load the Image  
+image = "exa.jpg"
 
 image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
@@ -33,19 +32,13 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 cv2.putText(image_rgb, 'Region 1', (top_left1[0], top_left1[1] - 10), font, 0.7, (0, 255, 255), 2, cv2.LINE_AA)
 cv2.putText(image_rgb, 'Region 2', (top_left2[0], top_left2[1] - 10), font, 0.7, (255, 0, 255), 2, cv2.LINE_AA)
 cv2.putText(image_rgb, 'Center 1', (center1_x - 40, center1_y + 40), font, 0.6, (0, 255, 0), 2, cv2.LINE_AA)
-cv2.putText(image_rgb, 'Center 2', (center2_x - 40, center2_y + 40), font, 0.6, (0, 0, 255), 2, cv2.LINE_4)
+cv2.putText(image_rgb, 'Center 2', (center2_x - 40, center2_y + 40), font, 0.6, (0, 0, 255), 2, cv2.LINE_AA)
 
-arrow_start = (width - 50, 20)  # Start near the top-right
-arrow_end = (width - 50, height - 20)
+arrow_start = (height - 50, 20)  # Start near the top-right
+arrow_end = (height - 50, width - 20)
 
 cv2.arrowedLine(image_rgb, arrow_start, arrow_end, (255, 255, 0), 3, tipLength=0.05)  # Downward arrow
 cv2.arrowedLine(image_rgb, arrow_end, arrow_start, (255, 255, 0), 3, tipLength=0.05)  # Upward arrow\
 
 height_label_position = (arrow_start[0] - 150, (arrow_start[1] + arrow_end[1]) // 2)
-cv2.putText(image_rgb, f'Height: {height}px', height_label_position, font, 0.8, (255, 255, 0), 2, cv2.LINE_4)
-
-plt.figure(figsize=(12, 8))
-plt.imshow(image_rgb)
-plt.title('Annotated Image with Regions, Centers, and Bi-Directional Height Arrow')
-plt.axis('off')
-plt.show()
+cv2.putText(image_rgb, f'Width: {width}px', width, font, 0.8, (255, 255, 0), 2, cv2.LINE_AA)
