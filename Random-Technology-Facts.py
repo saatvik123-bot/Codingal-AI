@@ -4,22 +4,22 @@ from colorama import init, Fore, Back, Style
 # Initialize Colorama
 init(autoreset = True)
 
-url = "https://uselessfacts.jsph.pl/api/v2/facts/random?language=en"
+url = "https://api.chucknorris.io/jokes/random"
 
 
 
-def get_random_technology_facts():
+def chuck_norris_jokes():
     response = requests.get(url)
     if response.status_code == 200:
         fact_data = response.json()
-        print(Fore.BLUE +"Did you know?" + Fore.YELLOW +fact_data['text'])
+        print(Fore.BLUE +"Did you know?" + Fore.YELLOW +fact_data['value'])
     else:
         print(Fore.RED +"Failed to fetch fact")
 
-get_random_technology_facts()
+chuck_norris_jokes()
 while True:
-    user_input = input(Fore.GREEN +"Press Enter to get a random technology fact or type 'q' to quit...")
+    user_input = input(Fore.GREEN +"Press Enter to get a open food facts or type 'q' to quit...")
     if user_input.lower() == 'q':
         print(Fore.YELLOW +"Good Bye!")
         break
-    get_random_technology_facts()
+    chuck_norris_jokes()
