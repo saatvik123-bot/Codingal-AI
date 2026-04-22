@@ -24,6 +24,7 @@ while True:
         continue
 
     if user_input.lower() == "exit":
+        print(conversation_history)
         print(f"\n{Fore.BLUE}🛰️ Exiting Sentiment Spy. Farewell, Agent {user_name}! 🧩{Style.RESET_ALL}")
         break
 
