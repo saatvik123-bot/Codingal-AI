@@ -49,7 +49,7 @@ if __name__ == "__main__":
         print(Fore.RED + "❌ No text provided. Exiting.")
     else:
         # Ask the user for the model they want to use
-        print(Fore.YELLOW + "\nEnter the model name you want to use (e.g., facebook/bart-large-cnn):")
+        print(Fore.YELLOW + "\nEnter the model name you want to use")
         model_choice = input("Model name (leave blank for default): ").strip()
         if not model_choice:
             model_choice = DEFAULT_MODEL
