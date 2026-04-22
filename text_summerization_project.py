@@ -7,7 +7,7 @@ init(autoreset=True)
 
 
 # Default model name that can be easily changed
-DEFAULT_MODEL = "google/bart-large-xsum"
+DEFAULT_MODEL = "facebook/bart-large-cnn"
 
 def build_api_url(model_name):
     return f"https://router.huggingface.co/hf-inference/models/{model_name}"
