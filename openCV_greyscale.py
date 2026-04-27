@@ -14,8 +14,7 @@ if key == ord('s'):
 
     cv2.imwrite('greyscale_resized_image.jpg', resize_image)
     print("Image saved as greyscale_resized_image.jpg")
-else:
-    print("Image not saved")
+else:    print("Image not saved")
 
 cv2.destroyAllWindows()
 
