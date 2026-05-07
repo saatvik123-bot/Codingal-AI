@@ -70,7 +70,7 @@ def daylight_effect(image):
 
 
 def night_mood_effect(image):
-    image = ImageEnhance.Brightness(image).enhance(0.9)
+    image = ImageEnhance.Brightness(image).enhance(0.4)
     image = ImageEnhance.Contrast(image).enhance(1.4)
     image = image.filter(ImageFilter.GaussianBlur(radius=0.5))
     return image
