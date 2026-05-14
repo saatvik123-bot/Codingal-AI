@@ -11,11 +11,6 @@ HEADERS = {"Authorization": f"Bearer {HF_API_KEY}", "Content-Type": "application
 
 VISION_MODELS = [
     "Qwen/Qwen2.5-VL-72B-Instruct",
-    "Qwen/Qwen3-VL-32B-Instruct:together",
-    "Qwen/Qwen2.5-VL-7B-Instruct:together",
-    "Qwen/Qwen2.5-VL-32B-Instruct:together",
-    "Qwen/Qwen2-VL-2B-Instruct:together",
-    "Qwen/Qwen2-VL-7B-Instruct:together",
 ]
 TEXT_MODELS = [
     "Qwen/Qwen2.5-7B-Instruct:together",
