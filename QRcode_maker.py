@@ -2,7 +2,7 @@ import qrcode
 from PIL import Image
 
 # Image link or image path
-image_path = "https://ibb.co/nN8k6Q7T"
+image_path = "https://ibb.co/gZBkjJ4y"
 
 # Create QR code
 qr = qrcode.QRCode(
