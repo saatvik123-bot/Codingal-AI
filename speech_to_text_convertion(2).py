@@ -1,37 +1,56 @@
+# # Install required libraries
+# pip3 install SpeechRecognition
+# pip3 install pyttsx3
+# pip3 install googletrans==4.0.0-rc1
+# pip3 install pyaudio
+
+# # macOS Apple Silicon (M1/M2/M3/M4/M5) fix
+# # Install FLAC using Homebrew
+# brew install flac
+
+# # Remove old Intel FLAC binary bundled with speech_recognition
+# # Replace <username> and <python-version> with your actual values
+# rm /Users/<username>/Library/Python/<python-version>/lib/python/site-packages/speech_recognition/flac-mac
+
 import speech_recognition as sr
 
 import pyttsx3
 
-from googletrans import   Translator
+from googletrans import Translator  # Google Translate API
 
+
+
+# Initialize text-to-speech engine
 
 def speak(text, language="en"):
 
     engine = pyttsx3.init()
 
-    engine.setProperty('rate', 150)
+    engine.setProperty('rate', 150)  # Speed of speech
 
     voices = engine.getProperty('voices')
 
+    
 
+    # Set voice for English or other language if supported by pyttsx3
 
     if language == "en":
 
-        engine.setProperty('voice', voices[0].id)
+        engine.setProperty('voice', voices[0].id)  # Default English voice
 
     else:
 
-        engine.setPoperty('voice', voices[1].id)
+        engine.setProperty('voice', voices[1].id)  # Fallback to another voice if available
 
+    
 
-
-    engine.sat(text)
+    engine.say(text)
 
     engine.runAndWait()
 
 
 
-
+# Speech-to-Text: Recognize spoken language (English)
 
 def speech_to_text():
 
@@ -39,13 +58,9 @@ def speech_to_text():
 
     with sr.Microphone() as source:
 
-        with sr.Microphone() as source:
+        print("???? Please speak now in English...")
 
-            print("???? Please speak now in engilis ....")
-
-            audio = recognizer.listen(source)
-
-
+        audio = recognizer.listen(source)
 
 
 
@@ -53,9 +68,9 @@ def speech_to_text():
 
         print("???? Recognizing speech...")
 
-        text = recognizer.recognize_google(audio, language="en-US")
+        text = recognizer.recognize_google(audio, language="en-US")  # Use English for speech recognition
 
-        print(f"✅ You Said: {text}")
+        print(f"✅ You said: {text}")
 
         return text
 
@@ -70,7 +85,10 @@ def speech_to_text():
     return ""
 
 
-def translate_text(text, target_language="es"):
+
+# Translate text using Google Translate API
+
+def translate_text(text, target_language="es"):  # Default target language is Spanish (es)
 
     translator = Translator()
 
@@ -82,9 +100,9 @@ def translate_text(text, target_language="es"):
 
 
 
+# Display language options to the user
 
-
-def display_language_option():
+def display_language_options():
 
     print("???? Available translation languages: ")
 
@@ -104,15 +122,14 @@ def display_language_option():
 
     print("8. Punjabi (pa)")
 
-    print("9. French (fr)")
 
 
+    # User selects language
 
-
-
-    choice = input("Please select the target language number (1-9): ")
+    choice = input("Please select the target language number (1-8): ")
 
     language_dict = {
+
         "1": "hi",
 
         "2": "ta",
@@ -127,40 +144,45 @@ def display_language_option():
 
         "7": "ml",
 
-        "8": "pa",
+        "8": "pa"
 
-        "9": "fr"
     }
 
+    
+
+    return language_dict.get(choice, "es")  # Default to Spanish if invalid input
 
 
 
-    return language_dict.get(choice, "es")
-
-
+# Main function to combine all steps
 
 def main():
 
+    # Step 1: Display language options and get user's choice
 
-    target_language = display_language_option()
+    target_language = display_language_options()
 
+    
 
+    # Step 2: Speech-to-Text (recognizing English speech)
 
+    original_text = speech_to_text()
 
-    original_text =  speech_to_text()
-
+    
 
     if original_text:
 
-         translated_text = translate_text(original_text, target_language=target_language)
+        # Step 3: Translate to selected target language
+
+        translated_text = translate_text(original_text, target_language=target_language)
 
         
 
         # Step 4: Text-to-Speech (Translate output and speak it)
 
-    speak(translated_text, language="en")  # Speak the translation in English
+        speak(translated_text, language="en")  # Speak the translation in English
 
-    print("✅ Translation spoken out!")
+        print("✅ Translation spoken out!")
 
 
 
