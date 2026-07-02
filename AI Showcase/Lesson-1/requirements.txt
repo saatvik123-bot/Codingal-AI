@@ -6,3 +6,7 @@ Huggingface_hub
 Groq
 
 python-dotenv
+
+openai
+
+configparser
